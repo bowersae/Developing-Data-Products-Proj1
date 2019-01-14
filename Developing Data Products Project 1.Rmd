@@ -1,0 +1,31 @@
+---
+title: "Developing Data Products Project 1"
+author: "Ann Bowers"
+date: "January 14, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(leaflet)
+```
+
+##Purpose
+The purpose of this project is to create an interactive map using leaflet.
+```{r create_map}
+my_date = "January 14, 2019"
+DW_link <- c("<a href='http://www.dollywood.com'>Dollywood</a>")
+
+DW_LatLong <- data.frame(
+  lat= c(35.796112),
+  lng = c(-83.534367)
+)
+
+DW_LatLong %>%
+  leaflet() %>%
+  addTiles() %>%
+  addControl(my_date, position="topright") %>%
+  addCircleMarkers(color="red", popup = DW_link)
+```
+
